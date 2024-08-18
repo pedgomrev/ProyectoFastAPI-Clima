@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta del Clima</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Consulta del Clima</h1>
+    </header>
+    <main>
+        <div id="container">
+            <p><strong>Ciudad:</strong> {{ datos.ciudad }}</p>
+            <p><strong>Fecha:</strong> {{ datos.fecha }}</p>
+            <p><strong>Temperatura:</strong> {{ datos.temperatura }} °C</p>
+            <p><strong>Sensación Térmica:</strong> {{ datos.SensacionTermica }} °C</p>
+            <p><strong>Humedad:</strong> {{ datos.humedad }} %</p>
+            <p><strong>Descripción:</strong> {{ datos.descripcion }}</p>
+        </div>
+    </main>
+    <footer>
+        <a href="#">Sobre el proyecto</a>
+
+    </footer>
+</body>
+</html>
