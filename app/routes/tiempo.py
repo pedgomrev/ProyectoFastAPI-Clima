@@ -6,8 +6,10 @@ import requests
 
 router = APIRouter()
 api_key = 'W9T6X2VD2ZY23BB3GYXBUS7TA'
-
-@router.get("/{ciudad}", response_class=HTMLResponse)
+@router.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+@router.get("/consulta", response_class=HTMLResponse)
 async def consultaCiudad(request: Request, ciudad: str):
     url = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{ciudad}?unitGroup=metric&key={api_key}'
     response = requests.get(url)
@@ -32,3 +34,7 @@ async def consultaCiudad(request: Request, ciudad: str):
         return templates.TemplateResponse("consulta.html", {"request": request, "datos": dataFormat})
     else:
         raise HTTPException(status_code=404, detail="City not found")
+    
+@router.get("/acercaDe", response_class=HTMLResponse)
+async def acercaDe(request: Request):
+    return templates.TemplateResponse("acercaDe.html", {"request": request})

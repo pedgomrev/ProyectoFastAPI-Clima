@@ -24,3 +24,14 @@ footer>a{
     color: #fff;
     text-decoration: none;
 }
+a{
+    color: #fff;
+    text-decoration: none;
+}
+.descripcion-footer{
+    color: #333;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+}

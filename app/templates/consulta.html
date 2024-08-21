@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta del Clima</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/all.min.css') }}">
 </head>
 <body>
     <header>
-        <h1>Consulta del Clima</h1>
+        <h1><a href="/">Consulta del Clima</a></h1>
     </header>
     <main>
         <div id="container">
@@ -17,12 +18,11 @@
             <p><strong>Temperatura:</strong> {{ datos.temperatura }} °C</p>
             <p><strong>Sensación Térmica:</strong> {{ datos.SensacionTermica }} °C</p>
             <p><strong>Humedad:</strong> {{ datos.humedad }} %</p>
-            <p><strong>Descripción:</strong> {{ datos.descripcion }}</p>
+            <p><strong>Pronóstico:</strong> {{ datos.descripcion }}</p>
         </div>
     </main>
     <footer>
-        <a href="#">Sobre el proyecto</a>
-
+        <a href="/acercaDe">Sobre el proyecto</a>
     </footer>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Climatact</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='/css/all.min.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Bienvenido/a a Climatact</h1>
+      <p>Consulta el clima de tu ciudad</p>
+    </header>
+    <main>
+      <div class="formulario">
+        <form id = "consulta" action="/consulta" method="get">
+          <input
+            type="text"
+            name="ciudad"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="nme"><span>¿Qué desea consultar?</span></label>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <a href="/acercaDe">Sobre el proyecto</a>
+  </footer>
+  </body>
+</html>
