@@ -2,6 +2,10 @@ body{
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
 }
+a{
+    color: #fff;
+    text-decoration: none;
+}
 header{
     background-color: #333;
     color: #fff;
@@ -10,7 +14,41 @@ header{
 }
 #container{
     text-align: center;
+    justify-content: center;
+    display: flex;
 }
+
+#contenidoPrincipal{
+    display: block;
+}
+
+.cabeceraBuscador{
+    margin: 20px;
+    padding: 5px;
+    display: inline;
+}
+.buscadores{
+    margin: 20px;
+    padding: 5px;
+    display: inline;
+}
+.contenedorTabla{
+    display:flex;
+    justify-content: center;
+}
+#tablaPrincipal{
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    color: #333;
+    border-bottom: 1px solid #c7c6c6;
+  }
+tr:nth-child(even) {background-color: #f2f2f2;} 
+
 footer{
     background-color: #333;
     color: #fff;
@@ -21,10 +59,6 @@ footer{
     width: 100%;
 }
 footer>a{
-    color: #fff;
-    text-decoration: none;
-}
-a{
     color: #fff;
     text-decoration: none;
 }
