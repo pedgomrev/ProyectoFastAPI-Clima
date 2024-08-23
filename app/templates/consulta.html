@@ -10,7 +10,7 @@
 <body>
     <header>
         <h1><a href="/">Consulta del clima en {{ciudad}}</a></h1>
-        {% if datos.length == 1 %}
+        {% if longitud == 1 %}
             <h2>para el día {{fechaInicio}} es:</h2>
         {% else %}
             <h2>desde el {{fechaInicio}} hasta el {{fechaFin}} es:</h2>
@@ -44,9 +44,6 @@
                                 <th>Temperatura</th>
                                 <th>Sensación Térmica</th>
                                 <th>Humedad</th>
-                                {% if datos.length == 1 %}
-                                    <th>Pronóstico</th>
-                                {% endif %}
                             </tr>
                         </thead>
                         <tbody>
@@ -56,9 +53,6 @@
                                 <td>{{ dato.temperatura }} °C</td>
                                 <td>{{ dato.SensacionTermica }} °C</td>
                                 <td>{{ dato.humedad }} %</td>
-                                {% if datos.length == 1 %}
-                                    <td>{{ dato.descripcion }}</td>
-                                {% endif %}
                             </tr>
                             {% endfor %}
                         </tbody>

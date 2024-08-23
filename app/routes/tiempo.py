@@ -48,14 +48,18 @@ async def consultaCiudad(request: Request, ciudad: str):
 
 @router.get("/consulta_rango", response_class=HTMLResponse)
 async def consultaRango(request: Request, ciudad: str, fechaInicio: str, fechaFin: str):
-    if fechaInicio == "":
+    if fechaInicio == "" :
         fechaInicio = str(date.today())
-    if fechaFin == "":
-        fechaFin = str(date.today())
-
-    fechaInicio = format_fecha(fechaInicio)
-    fechaFin = format_fecha(fechaFin)
-    url = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{ciudad}/{fechaInicio}/{fechaFin}?unitGroup=metric&key={api_key}'
+    if fechaFin == "" :
+            fechaInicio = format_fecha(fechaInicio)
+            url = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{ciudad}/{fechaInicio}?unitGroup=metric&key={api_key}'
+    else:
+        if fechaFin < fechaInicio:
+            raise HTTPException(status_code=404, detail="Fecha de fin no puede ser menor a la fecha de inicio")
+        else:
+            fechaFin = format_fecha(fechaFin)
+            fechaInicio = format_fecha(fechaInicio)
+            url = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{ciudad}/{fechaInicio}/{fechaFin}?unitGroup=metric&key={api_key}'
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
@@ -75,7 +79,7 @@ async def consultaRango(request: Request, ciudad: str, fechaInicio: str, fechaFi
     else:
         raise HTTPException(status_code=404, detail="Algo salió mal")
 
-    return templates.TemplateResponse("consulta.html", {"request": request, "datos": dataFormat, "ciudad": ciudad, "fechaInicio": fechaInicio, "fechaFin": fechaFin})
+    return templates.TemplateResponse("consulta.html", {"request": request, "datos": dataFormat, "ciudad": ciudad, "fechaInicio": fechaInicio, "fechaFin": fechaFin,"longitud": len(dataFormat)})
 
 @router.get("/acercaDe", response_class=HTMLResponse)
 async def acercaDe(request: Request):
