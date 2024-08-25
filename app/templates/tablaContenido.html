@@ -1,0 +1,22 @@
+<div class="contenedorTabla">
+    <table id ="tablaPrincipal" class="table-responsive">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Temperatura</th>
+                <th>Sensación Térmica</th>
+                <th>Humedad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dato in datos %}
+            <tr>
+                <td>{{ dato.fecha }}</td>
+                <td>{{ dato.temperatura }} °C</td>
+                <td>{{ dato.SensacionTermica }} °C</td>
+                <td>{{ dato.humedad }} %</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
