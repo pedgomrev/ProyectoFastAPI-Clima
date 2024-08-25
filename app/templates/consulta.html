@@ -1,69 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consulta del Clima</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="{{ url_for('static', path='/css/all.min.css') }}">
-</head>
-<body>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='/css/all.min.css') }}"
+    />
+  </head>
+  <body>
     <header>
-        <h1><a href="/">Consulta del clima en {{ciudad}}</a></h1>
-        {% if longitud == 1 %}
-            <h2>para el día {{fechaInicio}} es:</h2>
-        {% else %}
-            <h2>desde el {{fechaInicio}} hasta el {{fechaFin}} es:</h2>
-        {% endif %}
-        <p>Al ser una cuenta gratis de la api tiene un límite de 50 peticiones por dia.</p>
+      <h1><a href="/">Consulta del clima en {{ciudad}}</a></h1>
+      <p>
+        Al ser una cuenta gratis de la api tiene un límite de 50 peticiones por
+        dia.
+      </p>
     </header>
     <main>
-        <div id="container">
-            <div class="contenidoPrincipal">
-                <div class="cabeceraBuscador">
-                    <div class="buscadores">
-                        <form action="/consulta_rango" method="get">
-                            <label for="ciudad">Ciudad:</label>
-                            <input type="text" name="ciudad" id="ciudad" value="{{ciudad}}">
-
-                            <label for="fecha">Fecha inicio:</label>
-                            <input type="date" name="fechaInicio" id="fechaInicio" value="{{fechaInicio}}">
-
-                            <label for="fecha">Fecha fin:</label>
-                            <input type="date" name="fechaFin" id="fechaFin" value="{{fechaFin}}">
-
-                            <button type="submit">Buscar <i class="fas fa-search"></i></button>
-                        </form>
-                    </div>
+      <div id="container">
+        <div class="contenidoPrincipal">
+          <div class="cabeceraBuscador">
+            <div class="buscadores">
+              <form id="consulta-form">
+                <div class ="contenedorLabels">
+                  <label for="ciudad">Ciudad:</label>
+                  <input
+                    type="text"
+                    name="ciudad"
+                    id="ciudad"
+                    value="{{ciudad}}"
+                  />
                 </div>
-                <div class="contenedorTabla">
-                    <table id ="tablaPrincipal">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Temperatura</th>
-                                <th>Sensación Térmica</th>
-                                <th>Humedad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for dato in datos %}
-                            <tr>
-                                <td>{{ dato.fecha }}</td>
-                                <td>{{ dato.temperatura }} °C</td>
-                                <td>{{ dato.SensacionTermica }} °C</td>
-                                <td>{{ dato.humedad }} %</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-            </div>
-            </div>
+                <div class ="contenedorLabels">
+                  <label for="fecha">Fecha inicio:</label>
+                  <input
+                    type="date"
+                    name="fechaInicio"
+                    id="fechaInicio"
+                    value="{{fechaInicio}}"
+                  />
+                </div>
+                <div class ="contenedorLabels">
+                  <label for="fecha">Fecha fin:</label>
+                  <input
+                    type="date"
+                    name="fechaFin"
+                    id="fechaFin"
+                    value="{{fechaFin}}"
+                  />
+                </div>
 
+                <button type="submit">
+                  Buscar <i class="fas fa-search"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <div id="contenedorTabla">
+            <table id="tablaPrincipal">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Temperatura</th>
+                  <th>Sensación Térmica</th>
+                  <th>Humedad</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dato in datos %}
+                <tr>
+                  <td>{{ dato.fecha }}</td>
+                  <td>{{ dato.temperatura }} °C</td>
+                  <td>{{ dato.SensacionTermica }} °C</td>
+                  <td>{{ dato.humedad }} %</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
+      </div>
     </main>
     <footer>
-        <a href="/acercaDe">Sobre el proyecto</a>
+      <a href="/acercaDe">Sobre el proyecto</a>
     </footer>
-</body>
+  </body>
 </html>
+
+<script src="{{ url_for('static', path='/js/peticiones.js') }}"></script>

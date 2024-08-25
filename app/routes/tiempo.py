@@ -46,7 +46,7 @@ async def consultaCiudad(request: Request, ciudad: str):
     else:
         raise HTTPException(status_code=404, detail="City not found")
 
-@router.get("/consulta_rango", response_class=HTMLResponse)
+@router.get("/consulta_rango/{ciudad}/{fechaInicio}/{fechaFin}", response_class=HTMLResponse)
 async def consultaRango(request: Request, ciudad: str, fechaInicio: str, fechaFin: str):
     if fechaInicio == "" :
         fechaInicio = str(date.today())
@@ -79,7 +79,7 @@ async def consultaRango(request: Request, ciudad: str, fechaInicio: str, fechaFi
     else:
         raise HTTPException(status_code=404, detail="Algo salió mal")
 
-    return templates.TemplateResponse("consulta.html", {"request": request, "datos": dataFormat, "ciudad": ciudad, "fechaInicio": fechaInicio, "fechaFin": fechaFin,"longitud": len(dataFormat)})
+    return templates.TemplateResponse("tablaContenido.html", {"request": request, "datos": dataFormat, "ciudad": ciudad, "fechaInicio": fechaInicio, "fechaFin": fechaFin,"longitud": len(dataFormat)})
 
 @router.get("/acercaDe", response_class=HTMLResponse)
 async def acercaDe(request: Request):

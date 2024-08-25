@@ -1,11 +1,88 @@
+/* DISEÑO PARA MOVIL Y GENERALES */
 body{
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+.contenedorLabels{
+    display:block;
+    margin : 10px;
+    padding: 5px;
+}
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Para un desplazamiento suave en dispositivos móviles */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+    color: #333;
+    border-bottom: 1px solid #c7c6c6;
+  }
+td {
+    white-space: nowrap;  /* Evita que el texto se rompa en líneas */
+    overflow: hidden;     /* Oculta cualquier texto que se desborde */
+    text-overflow: ellipsis; /* Añade "..." al final si el texto es demasiado largo */
+}
+/* DISEÑO PARA TABLET */
+@media (min-width: 600px){
+    body{
+        font-size: 20px;
+    }
+    .contenedorLabels{
+        display:inline;
+        margin : 10px;
+        padding: 5px;
+    }
+    td {
+        white-space: normal; /* Permite que el texto se envuelva en múltiples líneas */
+        word-wrap: break-word; /* Forza el ajuste de palabras largas en la siguiente línea */
+    }
+    th, td {
+        padding: 15px;
+        text-align: center;
+        color: #333;
+        border-bottom: 1px solid #c7c6c6;
+      }
+}
+/* DISEÑO PARA PC */
+@media (min-width: 1024px){
+    body{
+        font-size: 24px;
+    }
+    .cabeceraBuscador{
+        margin: 20px;
+        padding: 5px;
+        display: inline;
+    }
+    .buscadores{
+        margin: 20px;
+        padding: 5px;
+        display: inline;
+    }
+    .contenedorLabels{
+        display:inline;
+        margin : 10px;
+        padding: 5px;
+    }
+    th, td {
+        padding: 15px;
+        text-align: center;
+        color: #333;
+        border-bottom: 1px solid #c7c6c6;
+      }
 }
 a{
     color: #fff;
     text-decoration: none;
 }
+
 header{
     background-color: #333;
     color: #fff;
@@ -32,7 +109,7 @@ header{
     padding: 5px;
     display: inline;
 }
-.contenedorTabla{
+#contenedorTabla{
     display:flex;
     justify-content: center;
 }
@@ -41,12 +118,7 @@ header{
     border-collapse: collapse;
 }
 
-th, td {
-    padding: 15px;
-    text-align: center;
-    color: #333;
-    border-bottom: 1px solid #c7c6c6;
-  }
+
 tr:nth-child(even) {background-color: #f2f2f2;} 
 
 footer{
