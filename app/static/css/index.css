@@ -5,11 +5,7 @@
     align-items: center;
     margin-top: 20px;
 }
-#consulta{
-    width: 26%;
-    padding: 10px;
-    font-size: 16px;
-}
+
 /*
 Basic input element using psuedo classes
 */
@@ -109,6 +105,25 @@ html {
     margin: 0;
     position: absolute;
     color: #8F8F8F;
+    font-size: 20px;
+    top: -66px;
+    left: 0px;
+    z-index: -1;
+    -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  }
+  #consulta{
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+}
+@media (min-width: 600px){
+  input.question + label > span,
+  textarea.question + label > span {
+    font-weight: 300;
+    margin: 0;
+    position: absolute;
+    color: #8F8F8F;
     font-size: 48px;
     top: -66px;
     left: 0px;
@@ -116,7 +131,32 @@ html {
     -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
     transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
   }
-  
+  #consulta{
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+}
+}
+  @media (min-width: 1024px){
+    input.question + label > span,
+    textarea.question + label > span {
+      font-weight: 300;
+      margin: 0;
+      position: absolute;
+      color: #8F8F8F;
+      font-size: 48px;
+      top: -66px;
+      left: 0px;
+      z-index: -1;
+      -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+      transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+    }
+    #consulta{
+      width: 26%;
+      padding: 10px;
+      font-size: 16px;
+  }
+}
   input[type="submit"] {
     -webkit-transition: opacity 0.2s ease, background 0.2s ease;
     transition: opacity 0.2s ease, background 0.2s ease;
